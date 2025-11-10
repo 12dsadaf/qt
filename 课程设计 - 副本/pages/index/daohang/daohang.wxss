@@ -1,0 +1,49 @@
+/* 位置信息浮层样式 */
+.location-overlay {
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  padding: 8rpx 15rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 8rpx;
+  z-index: 10;
+}
+
+.location-text {
+  color: white;
+  font-size: 26rpx;
+  max-width: 600rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 保留原有样式 */
+.title {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: rgb(37, 153, 85);
+  font-family: serif;
+  font-weight: bolder;
+}
+
+.btnLayout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.location-info {
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  padding: 8rpx 15rpx;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 26rpx;
+  border-radius: 8rpx;
+  z-index: 10;
+}

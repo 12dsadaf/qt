@@ -1,0 +1,15 @@
+.box1 {
+    height: 400rpx;
+    width: 600rpx;
+    margin: auto;
+    padding: 20rpx;
+    border: 1px solid silver;
+    background-color:ghostwhite ;
+    border-radius: 30rpx;
+    margin-top: 10px;
+  }
+  
+  button{
+    margin-top: 10px;
+    width: 400rpx;
+  }

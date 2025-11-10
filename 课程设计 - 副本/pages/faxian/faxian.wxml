@@ -1,0 +1,36 @@
+<image src="/pages/images/mosquito-banner.jpg" mode='widthFix' class="img1" style="height: 291rpx; display: inline-block; box-sizing: border-box"></image>
+
+<view class="news1" bindtap="1" >
+    <view class="news2">
+        <text class="title">东莞理工学院基孔肯雅热防控工作方案发布</text>
+            <image src="/pages/images/news/mosquito-plan.jpg" class="image" mode='widthFix'/>
+        <view class="bottom">
+            <text>校医院防控办公室</text>
+        </view>
+    </view>
+</view>
+
+<view class="news1" bindtap="2">
+    <view class="news2">
+        <text class="title">15个公寓门栋全面消杀，上大防蚊行动进行时</text>
+        <view class="image" >
+            <image src="/pages/images/news/campus-spray.jpg" mode="widthFix"/>
+        </view>
+        <view class="bottom">
+            <text>后勤保障部公寓办</text>
+        </view>
+    </view>
+</view>
+
+<view class="news1" bindtap="3">
+    <view class="news2">
+        <text class="title">防蚊志愿者在行动，校园清除积水死角</text>
+        <view class="image" >
+            <image src="/pages/images/news/volunteer-work.jpg" mode="widthFix"/>
+        </view>
+        <view class="bottom">
+            <text>校团委</text>
+        </view>
+    </view>
+</view>
+

@@ -1,0 +1,33 @@
+.img1 {
+    width: 100%;
+}
+
+.news1 {
+    margin: 15px;
+    background: rgb(241, 241, 255);
+    border-radius: 30rpx;
+}
+
+.news2 {
+    background: #fff;
+    margin: 0 10px;
+    padding: 10px 0;
+    min-height: 84px;
+    border-bottom: 1px solid #eee;
+    border-radius: 30rpx;
+
+}
+
+.title {
+    font-weight: bolder;
+}
+
+.image {
+    margin: auto;
+    height: 160px;
+}
+
+.bottom {
+    font-size: 12px;
+    color: #aaa;
+}

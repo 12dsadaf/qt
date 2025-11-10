@@ -1,0 +1,51 @@
+.container {
+  padding: 20rpx;
+}
+
+.appointment-card {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.info-item {
+  font-size: 28rpx;
+  color: #666;
+  margin: 15rpx 0;
+  line-height: 40rpx;
+}
+
+.cancel-btn {
+  width: 100%;
+  margin-top: 30rpx;
+}
+
+/* 原有样式保持不变 */
+.img{
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  padding-top: 200px;
+  padding-bottom: 10px;
+  margin: auto;
+  width: 100px;
+}
+
+.text{
+  text-align: center;
+  padding-right:10px ;
+}
+
+image{
+  width: 100%;
+}

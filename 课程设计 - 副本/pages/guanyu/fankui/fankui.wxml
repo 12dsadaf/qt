@@ -1,0 +1,9 @@
+<view hidden="{{flag2}}" class="box1">
+    <input placeholder="留下您的宝贵意见~" bindinput="messageInput"></input>
+</view>
+
+<button hidden="{{flag2}}" type="primary" bindtap="showMessage">反馈</button>
+
+<view hidden="{{flag}}" class="box1">
+    <view>{{Show.message}}</view>
+</view>

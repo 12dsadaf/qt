@@ -1,0 +1,18 @@
+<view class="container">
+  <!-- 有预约信息时显示 -->
+  <view wx:if="{{appointment}}" class="appointment-card">
+    <view class="title">我的预约信息</view>
+    <view class="info-item">姓名：{{appointment.name}}</view>
+    <view class="info-item">身份证号：{{appointment.id}}</view>
+    <view class="info-item">预约地点：{{appointment.location}}</view>
+    <view class="info-item">预约时间：{{appointment.day}} {{appointment.time}}</view>
+    <view class="info-item">提交时间：{{appointment.createTime}}</view>
+    <button bindtap="cancelAppointment" type="warn" class="cancel-btn">取消预约</button>
+  </view>
+
+  <!-- 无预约信息时显示 -->
+  <view wx:else class="img">
+    <image src="/pages/images/8.png" mode="widthFix"></image>
+    <view class="text">暂无预约</view>
+  </view>
+</view>

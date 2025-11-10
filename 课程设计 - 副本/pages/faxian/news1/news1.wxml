@@ -1,0 +1,43 @@
+<view class="content" class="box">
+  <image src="/pages/images/gonggao.jpeg" mode="widthFix"></image>
+  <view class="title">一、学校防蚊工作管理机构</view>
+  <view class="article-content">后勤保障处是学校防蚊工作的主要负责部门，统一协调学校各区域的防蚊工作；各二级学院设立防蚊工作小组，负责本学院辖区内的防蚊宣传和日常检查；校学生会权益部负责监督防蚊工作的落实情况。</view>
+
+  <view class="title">二、防蚊工作范围
+</view>
+  <view class="article-content">全校</view>
+
+  <view class="title">三、防蚊工作目标</view>
+  <view class="article-content">有效控制校园蚊虫密度，降低蚊虫传播疾病风险，为师生创造健康安全的学习生活环境</view>
+
+  <view class="title">四、防蚊工作原则</view>
+  <view class="article-content">坚持预防为主、综合防治的原则，采取环境治理、物理防治、化学防治相结合的方式开展防蚊工作</view>
+
+  <view class="title">五、环境治理措施</view>
+  <view class="article-content">1. 定期清理校园内各类积水容器，包括花盆托盘、废旧轮胎、塑料瓶等，消除蚊虫孳生地。
+2. 保持校园排水系统畅通，防止雨水淤积。
+3. 加强校园绿化管理，及时修剪杂草灌木，保持植被通风透光。
+4. 定期清理校园垃圾，保持环境整洁，减少蚊虫栖息场所。</view>
+
+  <view class="title">六、物理防治措施</view>
+  <view class="article-content">1. 在教学楼、宿舍、食堂等人员密集场所安装纱窗、纱门，防止蚊虫进入。
+2. 在校园公共区域合理设置灭蚊灯，并定期检查维护，确保其正常工作。
+3. 鼓励师生使用蚊帐、电蚊拍等个人防蚊用品。</view>
+
+  <view class="title">七、化学防治措施</view>
+  <view class="article-content">（一）消杀频次：每周对校园公共区域进行至少一次集中消杀，雨季或蚊虫活动频繁期增加消杀频次。
+
+（二）消杀方式：聘请专业消杀公司，采用符合国家标准的杀虫剂，对校园绿化带、下水道、垃圾桶周边等蚊虫易孳生区域进行喷洒处理。
+
+（三）注意事项：在进行化学消杀作业时，应提前在相关区域张贴通知，提醒师生避开消杀时段，确保人身安全。</view>
+
+  <view class="title">八、宣传教育工作</view>
+  <view class="article-content">1. 通过校园网、公众号、宣传栏等多种渠道，向师生宣传防蚊知识和学校防蚊工作措施。
+2. 每年春季开展防蚊宣传周活动，组织防蚊知识讲座、有奖问答等活动，提高师生防蚊意识。
+3. 鼓励师生积极参与防蚊工作，发现校园内有积水、蚊虫密集等情况及时向后勤保障处反映。</view>
+
+  <view class="title">九、监督与考核</view>
+  <view class="article-content">（一）后勤保障处每周对校园防蚊工作进行检查，建立检查台账，对发现的问题及时督促整改。
+
+（二）将防蚊工作纳入各部门年度考核内容，对防蚊工作成效显著的部门和个人予以表彰，对工作不力的予以通报批评。</view>
+</view>

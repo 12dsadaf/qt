@@ -1,0 +1,30 @@
+<view class="box">
+  <text style="font-weight:600;font-size:40rpx;padding:20px 15px 15px 15px;">预约选择</text>
+  <image class="img1" mode="widthFix" src="/pages/images/libarary.png"></image>
+  <view class="divLine"></view>
+
+  <form bindsubmit="formSubmit">
+    <view class="flex">
+      <text style="margin: 15rpx; font-size: 28rpx;">姓名：</text>
+      <input type="text" auto-focus name='name' value="{{name}}" placeholder="请输入2-5个汉字的姓名" />
+    </view>
+    <view class="divLine2"></view>
+
+    <view class="flex">
+      <text style="margin: 15rpx; font-size: 28rpx;">身份证号码：</text>
+      <input type="text" name='id' value="{{id}}" placeholder="请输入18位身份证号" maxlength="18" />
+    </view>
+
+    <view class="divLine2"></view>
+
+    <picker mode="multiSelector" bindchange="bindCustomPickerChange" bindcolumnchange="bindCustomPickerColumnChange" value="{{customIndex}}" range="{{onlyArray}}">
+      <view style="margin: 15rpx; font-size: 28rpx;">
+        时间地点选择：{{onlyArray[0][customIndex[0]]}}，{{onlyArray[1][customIndex[1]]}}，{{onlyArray[2][customIndex[2]]}}
+      </view>
+    </picker>
+
+    <view class="btnLayout">
+      <button type="primary" form-type="submit">确定</button>
+    </view>
+  </form>
+</view>

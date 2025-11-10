@@ -1,0 +1,39 @@
+<view class="container">
+    <view class="userinfo">
+        <block wx:if="{{!hasUserInfo}}">
+            <button type="primary" wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 登录 </button>
+            <button  wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo" > 登录 </button>
+        </block>
+        
+        <block wx:else>
+            <view class="user">
+                <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
+                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            </view>
+        </block>
+    </view>
+</view>
+
+
+<view class="bottom">
+    <view class="bottom-content">
+
+        <navigator url="/pages/guanyu/yuyue/yuyue">
+            <view class="me-about">
+                <text>我的预约</text>
+            </view>
+        </navigator>
+
+        <navigator url="/pages/guanyu/fankui/fankui">
+            <view class="me-about">
+                <text>问题反馈</text>
+            </view>
+        </navigator>
+
+        <navigator url="/pages/guanyu/yingsi/yingsi">
+            <view class="me-about">
+                <text>隐私政策</text>
+            </view>
+        </navigator>
+    </view>
+</view>

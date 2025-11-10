@@ -1,0 +1,34 @@
+.content {
+    display: flex;
+    flex-direction: colum;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+    background-color: #fff;
+    border-top: 1px solid #ededed;
+    padding-bottom: 5px;
+}
+
+.title {
+    font-size: 34rpx;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+image {
+    margin-left: 25px;
+    width: 100%;
+    height: 200px;
+    margin: auto 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.article-content {
+    color: #666;
+    font-size: 28rpx;
+    margin-bottom: 20rpx;
+    margin-left: 30rpx;
+    line-height: 40rpx;
+    letter-spacing: 2rpx;
+}

@@ -1,0 +1,4 @@
+    <view class="img">
+        <image src="/pages/images/7.png" mode="widthFix"></image>
+        <view class="text">暂无订单</view>
+    </view>

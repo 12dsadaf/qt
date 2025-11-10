@@ -1,0 +1,22 @@
+<view class='box'>
+    <view class='title'>导航</view>
+    <view class="map-container">
+        <!-- 使用map组件显示地图和位置，替代原有image -->
+        <map 
+            longitude="{{longitude}}" 
+            latitude="{{latitude}}" 
+            markers="{{markers}}" 
+            show-location 
+            scale="16"
+            style="width: 100%; height: 320px;"
+        ></map>
+        <!-- 显示当前位置信息 -->
+        <view class="location-info" wx:if="{{currentAddress}}">
+            当前位置：{{currentAddress}}
+        </view>
+    </view>
+    <view class='btnLayout'>
+        <button bindtap='chooseLocation' type='primary'>选择位置</button>
+        <button bindtap='getCurrentLocation' type='primary'>获取当前位置</button>
+    </view>
+</view>

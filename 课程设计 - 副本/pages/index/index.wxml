@@ -1,0 +1,96 @@
+<view class="head">
+  <view class="title">
+    <swiper indicator-dots='true' autoplay='true' interval='3000' duration='1000' circular='true' class="swip">
+      <block wx:for="{{Imgs}}" wx:for-index="index">
+        <swiper-item>
+          <image src='{{Imgs[index].url}}' mode='widthFix'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
+
+<view class="zijian">
+  <view class="title2">基孔肯雅热预防指南</view>
+</view>
+
+<!-- 新增防蚊警示 -->
+<view class="warning">
+  <view class="mosquito-point"></view>
+  <text class="warning-text">⚠️ 基孔肯雅热通过蚊子传播，请注意防蚊措施</text>
+</view>
+
+<view class="function">
+  <view class="release">
+    <view class="list">
+      <view bindtap="diancan">
+        <image src="/pages/images/vaccine.jpg" class="image3"></image>
+      </view>
+      <navigator url="/pages/index/yuyue/yuyue">
+      <view class="button" >
+        预约
+      </view>
+      </navigator>
+    </view>
+    <view class="font">
+      疫苗预约
+    </view>
+  </view>
+
+  <view class="release">
+    <view class="list">
+      <view bindtap="ontap">
+        <image src="/pages/images/mosquito-point.jpg" class="image3"></image>
+      </view>
+      <navigator url="/pages/index/daohang/daohang">
+        <view class="button">
+          导航
+        </view>
+      </navigator>
+    </view>
+    <view class="font">
+      防蚊点
+    </view>
+  </view>
+</view>
+
+<view class="function">
+  <view class="release">
+    <view class="list">
+      <view bindtap="huodong">
+        <image src="/pages/images/zixun.png" class="image3"></image>
+      </view>
+      <view class="button" bindtap="zixun">
+        发现
+      </view>
+    </view>
+    <view class="font">
+      防控资讯
+    </view>
+  </view>
+
+  <view class="release">
+    <view class="list">
+      <view bindtap="guanyu">
+        <image src="/pages/images/wode.png" class="image3"></image>
+      </view>
+      <view class="button" bindtap="wode">
+        我的
+      </view>
+    </view>
+    <view class="font">
+      个人信息
+    </view>
+  </view>
+</view>
+
+<view class="announcement">最新消息：
+  <view class="list2">
+    <view class="li" bindtap="1">校园防蚊公告</view>
+    <view class="divLine"></view>
+    <view class="li" bindtap="2">宿舍区防蚊：筑牢健康防护网</view>
+    <view class="divLine"></view>
+    <view class="li" bindtap="3">“蚊虫克星”，志愿者在工作</view>
+    <view class="divLine"></view>
+  </view>
+</view>
