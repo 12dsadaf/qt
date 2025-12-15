@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/login.png</file>
+        <file>img/logout.png</file>
+        <file>img/return.png</file>
+        <file>img/1486485588-add-create-new-math-sign-cross-plus_81186.png</file>
+        <file>img/Delete-80_icon-icons.com_57340.png</file>
+        <file>img/edit_modify_icon_196940.png</file>
+        <file>img/magnifying-glass-searcher_icon-icons.com_53950.png</file>
+    </qresource>
+</RCC>
