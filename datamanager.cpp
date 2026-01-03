@@ -4,37 +4,41 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 
-// 单例实例�
+// ??????
 DataManager* DataManager::getInstance()
 {
     static DataManager instance;
     return &instance;
 }
 
-// 构造函数：初始化数据库连接
+// ?????????????
+
 DataManager::DataManager(QObject *parent) : QObject(parent)
 {
-    // 加载SQLite驱动
+    // ??SQLite??
     m_db = QSqlDatabase::addDatabase("QSQLITE");
-    m_db.setDatabaseName("D:/forQtProject/identifier.sqlite");  // 数据库文件（本地存储）
+    m_db.setDatabaseName("D:/forQtProject/identifier.sqlite");  // ???????????
 }
 
 DataManager::~DataManager()
+
+
+
 {
     if (m_db.isOpen()) {
-        m_db.close();  // 关闭数据库连接
+        m_db.close();  // ???????
     }
 }
 
-// 1. 初始化数据库：修改 task 表，新增 user_id 外键
+// 1. ????????? task ???? user_id ??
 bool DataManager::initDatabase()
 {
     if (!m_db.open()) {
-        qDebug() << "数据库打开失败：" << m_db.lastError().text();
+        qDebug() << "????????" << m_db.lastError().text();
         return false;
     }
 
-    // 1.1 创建用户表（原有代码不变）
+    // 1.1 ?????????????
     QString createUserTableSql = R"(
         CREATE TABLE IF NOT EXISTS user (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,7 +47,7 @@ bool DataManager::initDatabase()
         )
     )";
 
-    // 1.2 修改任务表：新增 user_id 字段（外键关联 user.id）
+    // 1.2 ???????? user_id ??????? user.id?
     QString createTaskTableSql = R"(
         CREATE TABLE IF NOT EXISTS task (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,18 +56,18 @@ bool DataManager::initDatabase()
             priority INTEGER NOT NULL CHECK(priority BETWEEN 1 AND 3),
             deadline TEXT NOT NULL,
             is_completed INTEGER NOT NULL DEFAULT 0,
-            user_id INTEGER NOT NULL, -- 关联用户ID
-            FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE -- 外键约束：用户删除时任务同步删除
+            user_id INTEGER NOT NULL, -- ????ID
+            FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE -- ????????????????
         )
     )";
 
     QSqlQuery query;
     if (!query.exec(createUserTableSql)) {
-        qDebug() << "创建用户表失败：" << query.lastError().text();
+        qDebug() << "????????" << query.lastError().text();
         return false;
     }
     if (!query.exec(createTaskTableSql)) {
-        qDebug() << "创建任务表失败：" << query.lastError().text();
+        qDebug() << "????????" << query.lastError().text();
         return false;
     }
 
@@ -73,9 +77,9 @@ bool DataManager::initDatabase()
 QList<Task> DataManager::getTasks(int userId) {
     QList<Task> tasks;
     QSqlQuery query;
-    // 增加 WHERE user_id = ? 条件，仅查询当前用户的任务
+    // ?? WHERE user_id = ? ?????????????
     query.prepare("SELECT id, name, category, priority, deadline, is_completed, user_id FROM task WHERE user_id = ?");
-    query.addBindValue(userId); // 绑定当前登录用户ID
+    query.addBindValue(userId); // ????????ID
     if (query.exec()) {
         while (query.next()) {
             Task task;
@@ -89,13 +93,13 @@ QList<Task> DataManager::getTasks(int userId) {
             tasks.append(task);
         }
     } else {
-        qDebug() << "查询任务失败：" << query.lastError().text();
+        qDebug() << "???????" << query.lastError().text();
     }
     return tasks;
 }
 
 
-// 注册用户：插入用户名和加密后的密码
+// ?????????????????
 bool DataManager::addUser(const QString &username, const QString &encryptedPwd)
 {
     if (!m_db.isOpen() || username.isEmpty() || encryptedPwd.isEmpty()) {
@@ -111,7 +115,7 @@ bool DataManager::addUser(const QString &username, const QString &encryptedPwd)
     return query.exec();
 }
 
-// 验证登录：匹配用户名和加密密码
+// ???????????????
 bool DataManager::verifyUser(const QString &username, const QString &encryptedPwd)
 {
     if (!m_db.isOpen() || username.isEmpty() || encryptedPwd.isEmpty()) {
@@ -127,7 +131,7 @@ bool DataManager::verifyUser(const QString &username, const QString &encryptedPw
     return query.exec() && query.next();
 }
 
-// 检查用户名是否已存在（核心修复函数）
+// ??????????????????
 bool DataManager::isUsernameExists(const QString &username)
 {
     if (!m_db.isOpen() || username.trimmed().isEmpty()) {
@@ -142,7 +146,7 @@ bool DataManager::isUsernameExists(const QString &username)
     return query.exec() && query.next();
 }
 
-// 通过用户名获取用户ID
+// ?????????ID
 int DataManager::getUserIdByUsername(const QString &username)
 {
     if (!m_db.isOpen() || username.isEmpty()) {
@@ -160,7 +164,7 @@ int DataManager::getUserIdByUsername(const QString &username)
     return -1;
 }
 
-// 2. 实现用户ID管理接口
+// 2. ????ID????
 void DataManager::setCurrentUserId(int userId)
 {
     m_currentUserId = userId;
@@ -172,12 +176,12 @@ int DataManager::getCurrentUserId() const
 }
 
 
-// 4. 扩展任务接口：所有操作均携带 user_id 筛选
+// 4. ?????????????? user_id ??
 bool DataManager::addTask(const Task &task, int userId)
 {
-    // 1. 校验：未登录/任务名为空，直接失败
+    // 1. ??????/??????????
     if (!m_db.isOpen() || m_currentUserId == -1 || task.name.isEmpty()) {
-        qDebug() << "新增任务失败：未登录或任务名空";
+        qDebug() << "???????????????";
         return false;
     }
 
@@ -193,11 +197,11 @@ bool DataManager::addTask(const Task &task, int userId)
     query.addBindValue(task.priority);
     query.addBindValue(task.deadline.toString("yyyy-MM-dd HH:mm:ss"));
     query.addBindValue(task.isCompleted ? 1 : 0);
-    // 强制绑定「当前登录用户的ID」（而不是task.userId，避免外部传入错误）
+    // ????????????ID?????task.userId??????????
     query.addBindValue(m_currentUserId);
 
     if (!query.exec()) {
-        qDebug() << "新增任务SQL失败：" << query.lastError().text();
+        qDebug() << "????SQL???" << query.lastError().text();
         return false;
     }
     return true;
@@ -207,7 +211,7 @@ bool DataManager::deleteTask(int taskId, int userId)
 {
     if (!m_db.isOpen() || userId == -1) return false;
 
-    // SQL 条件：仅删除当前用户的任务（task.id = ? AND user_id = ?）
+    // SQL ??????????????task.id = ? AND user_id = ??
     QString sql = "DELETE FROM task WHERE id = ? AND user_id = ?";
     QSqlQuery query;
     query.prepare(sql);
@@ -233,7 +237,7 @@ bool DataManager::updateTask(const Task &task, int userId)
     query.addBindValue(task.deadline.toString("yyyy-MM-dd HH:mm:ss"));
     query.addBindValue(task.isCompleted ? 1 : 0);
     query.addBindValue(task.id);
-    query.addBindValue(userId); // 仅更新当前用户的任务
+    query.addBindValue(userId); // ??????????
 
     return query.exec();
 }
@@ -241,25 +245,25 @@ bool DataManager::updateTask(const Task &task, int userId)
 QList<Task> DataManager::getAllTasks(int userId)
 {
     QList<Task> tasks;
-    // 1. 先校验：未登录/数据库未打开，直接返回空列表
+    // 1. ???????/??????????????
     if (!m_db.isOpen() || m_currentUserId == -1) {
-        qDebug() << "查询失败：未登录或数据库未打开";
+        qDebug() << "???????????????";
         return tasks;
     }
 
-    // 2. SQL强制过滤当前用户的user_id（关键！）
+    // 2. SQL?????????user_id?????
     QString sql = "SELECT * FROM task WHERE user_id = ? ORDER BY priority DESC, deadline ASC";
     QSqlQuery query;
     query.prepare(sql);
-    // 绑定「当前登录用户的ID」（而不是任意值）
+    // ??????????ID?????????
     query.addBindValue(m_currentUserId);
 
     if (!query.exec()) {
-        qDebug() << "查询任务SQL失败：" << query.lastError().text();
+        qDebug() << "????SQL???" << query.lastError().text();
         return tasks;
     }
 
-    // 3. 只读取当前用户的任务
+    // 3. ??????????
     while (query.next()) {
         Task task;
         task.id = query.value("id").toInt();
@@ -268,14 +272,14 @@ QList<Task> DataManager::getAllTasks(int userId)
         task.priority = query.value("priority").toInt();
         task.deadline = QDateTime::fromString(query.value("deadline").toString(), "yyyy-MM-dd HH:mm:ss");
         task.isCompleted = query.value("is_completed").toInt() == 1;
-        task.userId = m_currentUserId; // 强制绑定当前用户ID
+        task.userId = m_currentUserId; // ????????ID
         tasks.append(task);
     }
 
     return tasks;
 }
 
-// 按优先级筛选（仅当前用户）
+// ?????????????
 QList<Task> DataManager::filterTasksByPriority(int priority, int userId)
 {
     QList<Task> tasks;
@@ -289,7 +293,7 @@ QList<Task> DataManager::filterTasksByPriority(int priority, int userId)
     query.exec();
 
     while (query.next()) {
-        // 同 getAllTasks 赋值逻辑，省略重复代码
+        // ? getAllTasks ???????????
         Task task;
         task.id = query.value("id").toInt();
         task.name = query.value("name").toString();
@@ -303,7 +307,7 @@ QList<Task> DataManager::filterTasksByPriority(int priority, int userId)
     return tasks;
 }
 
-// 按完成状态筛选（仅当前用户）
+// ??????????????
 QList<Task> DataManager::filterTasksByCompletion(bool isCompleted, int userId)
 {
     QList<Task> tasks;
@@ -317,7 +321,7 @@ QList<Task> DataManager::filterTasksByCompletion(bool isCompleted, int userId)
     query.exec();
 
     while (query.next()) {
-        // 同 getAllTasks 赋值逻辑，省略重复代码
+        // ? getAllTasks ???????????
         Task task;
         task.id = query.value("id").toInt();
         task.name = query.value("name").toString();
