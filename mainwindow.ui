@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* 整体背景 */
+QWidget#centralwidget {
+    background-color: #f8f9fa;
+}
+
+/* 标签样式（优先级/完成状态） */
+QLabel#label, QLabel#label_2 {
+    font-size: 12px;
+    color: #343a40;
+    padding: 2px 5px;
+}
+
+/* 复选框（已完成） */
+QCheckBox#cxbCompleted {
+    font-size: 12px;
+    color: #343a40;
+    padding: 2px 5px;
+}
+
+/* 下拉框（优先级） */
+QComboBox#cxbPriority {
+    font-size: 12px;
+    padding: 3px 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+QComboBox#cxbPriority::drop-down {
+    border-left: 1px solid #ced4da;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/* 按钮通用基础样式 */
+QPushButton {
+    font-size: 12px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+}
+QPushButton:hover {
+    opacity: 0.9; /*  hover时轻微透明 */
+}
+QPushButton:pressed {
+    opacity: 0.8; /* 按下时更透明 */
+}
+
+/* 各按钮单独配色（区分功能） */
+QPushButton#btnAddTask {
+    background-color: #28a745; /* 绿色-添加 */
+}
+QPushButton#btnDeleteTask {
+    background-color: #dc3545; /* 红色-删除 */
+}
+QPushButton#btnExport {
+    background-color: #007bff; /* 蓝色-导出 */
+}
+QPushButton#btnFilterPriority, QPushButton#btnFilterCompleted {
+    background-color: #ffc107; /* 黄色-筛选 */
+}
+QPushButton#btnRefresh {
+    background-color: #6c757d; /* 灰色-刷新 */
+}
+
+/* 任务表格样式 */
+QTableView#tableView {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #ffffff;
+    alternate-background-color: #f1f3f5; /* 隔行变色 */
+}
+QTableView#tableView::item {
+    padding: 6px;
+    border-bottom: 1px solid #e9ecef;
+}
+QTableView#tableView::item:selected {
+    background-color: #e3f2fd; /* 选中行背景 */
+    color: #343a40;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>671</width>
+      <height>299</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>优先级筛选</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="cbxPriority">
+       <item>
+        <property name="text">
+         <string>低</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>中</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>高</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="0" column="2" colspan="2">
+      <widget class="QPushButton" name="btnFilterPriority">
+       <property name="text">
+        <string>筛选</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QPushButton" name="btnRefresh">
+       <property name="text">
+        <string>刷新</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>完成状态</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QCheckBox" name="cbxCompleted">
+       <property name="text">
+        <string>已完成</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2" colspan="2">
+      <widget class="QPushButton" name="btnFilterCompleted">
+       <property name="text">
+        <string>筛选</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="5">
+      <widget class="QTableView" name="tableView"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="btnAddTask">
+       <property name="text">
+        <string>添加任务</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1" colspan="2">
+      <widget class="QPushButton" name="btnDeleteTask">
+       <property name="text">
+        <string>删除任务</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QPushButton" name="btnExport">
+       <property name="text">
+        <string>导出CSV</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
