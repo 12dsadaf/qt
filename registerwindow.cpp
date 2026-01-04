@@ -1,6 +1,7 @@
 #include "RegisterWindow.h"
 #include <QCryptographicHash>
 
+
 RegisterWindow::RegisterWindow(QWidget *parent) :
     QDialog(parent)
 {
