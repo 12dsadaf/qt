@@ -2,6 +2,7 @@
 #include "RegisterWindow.h"
 #include <QCryptographicHash>
 
+
 // 构造函数：完全用代码创建控件，无 ui->setupUi(this)
 LoginWindow::LoginWindow(QWidget *parent) :
     QDialog(parent)
