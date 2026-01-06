@@ -1,6 +1,5 @@
 #include "TaskModel.h"
 
-
 TaskModel::TaskModel(QObject *parent, QSqlDatabase db)
     : QSqlTableModel(parent, db)
 {
