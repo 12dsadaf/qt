@@ -14,6 +14,7 @@ ReminderManager::ReminderManager(QObject *parent) : QObject(parent)
 // 检查所有未完成任务的截止时间，临近1小时内触发提醒
 void ReminderManager::checkDeadlines()
 {
+	
     int currentUserId = m_dataMgr->getCurrentUserId(); // 获取当前用户ID
     if (currentUserId == -1) return; // 未登录，不检查
 
