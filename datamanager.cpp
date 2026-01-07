@@ -4,7 +4,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 
-// 单例实例化
+// 单例实例�
 DataManager* DataManager::getInstance()
 {
     static DataManager instance;
