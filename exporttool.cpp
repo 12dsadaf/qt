@@ -9,7 +9,6 @@
 #include <QDir>
 #include <QPageSize>
 
-
 ExportTool::ExportTool(QObject *parent) : QObject(parent)
 {
 }
